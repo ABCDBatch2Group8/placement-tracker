@@ -1,6 +1,6 @@
 const express = require("express");
 const route = express.Router();
-const Student = require("../model/student-model");
+const Student = require("../model/student-data-model");
 const IctkStudent = require("../model/ictk-student-model")
 const jwt = require('jsonwebtoken');
 
@@ -68,6 +68,7 @@ route.post('/login', (req, res) => {
     Student.findOne({'email' :req.body.email},function(err, user){
       if(user=== null){
         console.log("no data found")
+        res.json({status: "invalid"});
         // res.json({status: "user doesnot exist"});
       }
       else if(err) {
