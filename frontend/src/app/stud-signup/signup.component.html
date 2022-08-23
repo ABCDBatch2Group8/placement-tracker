@@ -1,0 +1,286 @@
+ <div class="slider-area ">
+  <div class="single-slider section-overly d-flex align-items-center"  style="height:150px!important;">
+      <div class="container">
+          <div class="row">
+              <div class="col-xl-12">
+                  <div class="hero-cap text-center">
+                      <h2>Student Sign Up</h2>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!--
+<section class="contact-section">
+<div class="py-5">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <span class="anchor" id="formLogin"></span>
+  
+       
+        <div class="card rounded-0">
+          <div class="card-header">
+            
+          </div>
+          <div class="card-body">
+            <form  ngNativeValidate (ngSubmit)="AddUser()">
+              <div >
+                <label for="uname1">Name</label>
+                <input required type="text"class="form-control" name="uname" [(ngModel)]="Signin.name"/>
+             
+                </div>
+                <div >
+                  <label for="uname1">Email</label>
+                  <input required  type="email" class="form-control" name="uname" [(ngModel)]= "Signin.email"/>
+               
+                  </div>
+                  
+                 <div>
+                <label>Password</label>
+                <input  required type="password" placeholder = "min 8,1cap,1small,1num,1charec"pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" class="form-control"name="password" [(ngModel)]= "Signin.password"/>
+                </div> 
+                <div >
+                    <label>DWMS id</label>
+                    <input required type="text" class="form-control"name="uname" [(ngModel)]= "Signin.dwmsid"/>
+                </div>
+                <div >
+                    <label>Contact No</label>
+                    <input required type="text" pattern="^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$" placeholder="indian phone num only"class="form-control"name="uname" [(ngModel)]= "Signin.contactNo"/>
+                </div>
+                <div >
+                    <label>Course in ICT</label>
+                    <input required type="text" class="form-control"name="uname" [(ngModel)]= "Signin.courseInICT"/>
+                </div>
+                <div >
+                    <label>Qualification</label>
+                    <input required type="text" class="form-control"name="uname" [(ngModel)]= "Signin.qualification"/>
+                </div>
+                <div >
+                    <label>Stream</label>
+                    <input required type="text" class="form-control"name="uname" [(ngModel)]= "Signin.stream"/>
+                </div>
+              
+              <button type="submit" class="btn btn-success float-right">Signup</button>
+            </form>                             
+          </div>
+         
+        </div>
+       
+  
+      </div>
+  
+  
+    </div>
+  </div>
+</section>   -->
+<section class="contact-section">
+  <div class="py-5">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <span class="anchor" id="formLogin"></span>
+        <div class="card rounded-0">
+          <div class="card-header">
+            
+          </div>
+          <div class="card-body">
+<div class="register-form">
+  <form
+    name="form"
+    #f="ngForm"
+    (ngSubmit)="f.form.valid && AddUser()"
+    novalidate>
+    <div class="form-group">
+      <label>Full Name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="fullname"
+        [(ngModel)]="Signin.name"
+        required
+        #fullname="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && fullname.errors }"
+      />
+      <div *ngIf="f.submitted && fullname.errors" class="invalid-feedback">
+        <div *ngIf="fullname.errors['required']">Fullname is required</div>
+      </div>
+    </div>
+    <!-- <div class="form-group">
+      <label>Username</label>
+      <input
+        type="text"
+        class="form-control"
+        name="username"
+        [(ngModel)]="form.username"
+        required
+        minlength="6"
+        maxlength="20"
+        #username="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && username.errors }"
+      />
+      <div *ngIf="f.submitted && username.errors" class="invalid-feedback">
+        <div *ngIf="username.errors['required']">Username is required</div>
+        <div *ngIf="username.errors['minlength']">
+          Username must be at least 6 characters
+        </div>
+        <div *ngIf="username.errors['maxlength']">
+          Username must be at most 20 characters
+        </div>
+      </div>
+    </div> -->
+    <div class="form-group">
+      <label>Email</label>
+      <input
+        type="email"
+        class="form-control"
+        name="email"
+        [(ngModel)]="Signin.email"
+        required
+        email
+        #email="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && email.errors }"
+      />
+      <div *ngIf="f.submitted && email.errors" class="invalid-feedback">
+        <div *ngIf="email.errors['required']">Email is required</div>
+        <div *ngIf="email.errors['email']">Email is invalid</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input
+        type="password"
+        class="form-control"
+        name="password"
+        [(ngModel)]="Signin.password"
+        required
+        minlength="6"
+        maxlength="40"
+        #password="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
+      />
+      <div *ngIf="f.submitted && password.errors" class="invalid-feedback">
+        <div *ngIf="password.errors['required']">Password is required</div>
+        <div *ngIf="password.errors['minlength']">
+          Password must be at least 6 characters
+        </div>
+        <div *ngIf="password.errors['maxlength']">
+          Username must not exceed 40 characters
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>DWMS ID</label>
+      <input
+        type="text"
+        class="form-control"
+        name="dwmsid"
+        [(ngModel)]="Signin.dwmsid"
+        required
+        #dwmsid="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && dwmsid.errors }"
+      />
+      <div *ngIf="f.submitted && dwmsid.errors" class="invalid-feedback">
+        <div *ngIf="dwmsid.errors['required']">DWMS ID is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>CONTACT NUMBER</label>
+      <input
+        type="text"
+        class="form-control"
+        name="contactNo"
+        [(ngModel)]="Signin.contactNo"
+        required
+        #contactNo="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && contactNo.errors }"
+      />
+      <div *ngIf="f.submitted && contactNo.errors" class="invalid-feedback">
+        <div *ngIf="contactNo.errors['required']">CONTACT NUMBER is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>COURSE OPTED IN ICTAK</label>
+      <input
+        type="text"
+        class="form-control"
+        name="courseInICT"
+        [(ngModel)]="Signin.courseInICT"
+        required
+        #courseInICT="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && courseInICT.errors }"
+      />
+      <div *ngIf="f.submitted && courseInICT.errors" class="invalid-feedback">
+        <div *ngIf="courseInICT.errors['required']">COURSE OPTED is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>YOUR QUALIFICATIONS</label>
+      <input
+        type="text"
+        class="form-control"
+        name="qualification"
+        [(ngModel)]="Signin.qualification"
+        required
+        #qualification="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && qualification.errors }"
+      />
+      <div *ngIf="f.submitted && qualification.errors" class="invalid-feedback">
+        <div *ngIf="qualification.errors['required']">COURSE OPTED is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>YOUR STREAM</label>
+      <input
+        type="text"
+        class="form-control"
+        name="stream"
+        [(ngModel)]="Signin.stream"
+        required
+        #stream="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && stream.errors }"
+      />
+      <div *ngIf="f.submitted && stream.errors" class="invalid-feedback">
+        <div *ngIf="stream.errors['required']">COURSE OPTED is required</div>
+      </div>
+    </div>
+    
+    <div class="form-group form-check">
+      <input
+        type="checkbox"
+        lass="form-control"
+        name="acceptTerms"
+        
+        class="form-check-input"
+        required
+        
+        
+      />
+      <label for="acceptTerms" class="form-check-label">
+        I have read and agree to the Terms
+      </label>
+      <!-- <div *ngIf="f.submitted && acceptTerms.errors" class="invalid-feedback">
+        Accept Terms is required
+      </div> -->
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Register</button>
+      <button
+        type="button"
+        (click)="onReset(f)"
+        class="btn btn-warning float-right">
+        Reset
+      </button>
+    </div>
+  </form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
